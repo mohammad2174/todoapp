@@ -4,6 +4,32 @@ import Header from "./Header";
 
 
 class App extends Component {
+    state = {
+        formInput : '',
+        todos : []
+    }
+
+    formHandler(e){
+        e.preventDefault();
+        this.setState(prevState => {
+            return {
+                todos : [
+                    ...prevState.todos,
+                    {key : Date.now(), done : false, text : prevState.formInput}
+                ],
+                formInput : ''
+            }
+        })
+    }
+
+    inputHandler(e){
+        this.setState({formInput : e.target.value})
+    }
+
+    componentDidMount() {
+
+    }
+
     render() {
         return(
             <div className="App">
@@ -13,12 +39,12 @@ class App extends Component {
                         <div className="container d-flex flex-column align-items-center">
                             <h1 className="jumbotron-heading">Welcome!</h1>
                             <p className="lead text-muted">To get started, add some items to your list:</p>
-                            <div className="form-inline">
+                            <form className="form-inline" onSubmit={this.formHandler.bind(this)}>
                                 <div className="form-group">
-                                    <input type="text" className="form-control mx-sm-3" placeholder="i want to do ..."/>
-                                    <button className="btn btn-primary">add</button>
+                                    <input type="text" className="form-control mx-sm-3" placeholder="i want to do ..." value={this.state.formInput} onChange={this.inputHandler.bind(this)}/>
+                                    <button type='submit' className="btn btn-primary">add</button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </section>
                     <div className="todosList">

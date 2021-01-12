@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Header from "./Layouts/Header";
 import FormAddTodo from "./Todo/FormAddTodo";
 import TodoList from "./Todo/TodoList";
-import Todo from "./Todo/Todo";
+import TodosContext from './../Context/todos';
 
 
 class App extends Component {
@@ -58,28 +58,33 @@ class App extends Component {
 
     render() {
         return(
-            <div className="App">
-                <Header />
-                <main>
-                    <section className="jumbotron">
-                        <div className="container d-flex flex-column align-items-center">
-                            <h1 className="jumbotron-heading">Welcome!</h1>
-                            <p className="lead text-muted">To get started, add some items to your list:</p>
-                            <FormAddTodo add={this.addTodo.bind(this)} />
-                        </div>
-                    </section>
-                    <div className="todosList">
-                        <div className="container">
-                            <div className="d-flex flex-column align-items-center ">
-                                <TodoList todos={this.state.todos}
-                                          delete={this.deleteTodo.bind(this)}
-                                          done={this.toggleTodo.bind(this)}
-                                          edit={this.editTodo.bind(this)} />
+            <TodosContext.Provider value={{
+                todos : this.state.todos,
+                add : this.addTodo.bind(this),
+                done : this.toggleTodo.bind(this),
+                delete : this.deleteTodo.bind(this),
+                edit : this.editTodo.bind(this)
+            }}>
+                <div className="App">
+                    <Header />
+                    <main>
+                        <section className="jumbotron">
+                            <div className="container d-flex flex-column align-items-center">
+                                <h1 className="jumbotron-heading">Welcome!</h1>
+                                <p className="lead text-muted">To get started, add some items to your list:</p>
+                                <FormAddTodo />
+                            </div>
+                        </section>
+                        <div className="todosList">
+                            <div className="container">
+                                <div className="d-flex flex-column align-items-center ">
+                                    <TodoList />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </main>
-            </div>
+                    </main>
+                </div>
+            </TodosContext.Provider>
         )
     }
 }

@@ -6,8 +6,8 @@ import TodosContext from '../../Context/todos';
 function Header() {
     const todosContext = useContext(TodosContext);
     const authContext = useContext(AuthContext);
-    let doLogin = () => authContext.login();
-    let doLogout = () => authContext.logout();
+    let doLogin = () => authContext.dispatch({type : 'login_user'});
+    let doLogout = () => authContext.dispatch({type : 'logout_user'});
     return(
         <header>
             <div className="navbar navbar-dark bg-dark shadow-sm">

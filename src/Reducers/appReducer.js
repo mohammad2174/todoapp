@@ -1,6 +1,12 @@
 function AppReducer(state , action) {
     console.log(state , action)
     switch (action.type) {
+        case 'init_todo' :
+            let {todos} = action.payload;
+            return {
+                ...state,
+                todos
+            }
         case 'add_todo' :
             return addTodo(state , action);
 

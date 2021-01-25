@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import React, {useReducer , useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Header from "./Layouts/Header";
 import FormAddTodo from "./Todo/FormAddTodo";
@@ -6,6 +6,7 @@ import TodoList from "./Todo/TodoList";
 import TodosContext from './../Context/todos';
 import AuthContext from './../Context/auth';
 import AppReducer from './../Reducers/appReducer';
+import axios from 'axios';
 
 
 // class App extends Component {
@@ -58,7 +59,21 @@ function App() {
         authenticated : false,
     })
 
+    let jsonHandler = (data) => {
+      let todos =  Object.entries(data).map(([key , value]) => {
+          return {
+              ...value,
+              key
+          }
+      });
+      dispatch({type : 'init_todo' , payload :{todos}})
+    }
 
+    useEffect(() => {
+        axios.get(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos.json`)
+            .then(response => jsonHandler(response.data))
+            .catch(err => console.log(err));
+    },[]);
 
     return(
         <AuthContext.Provider value={{authenticated : state.authenticated,

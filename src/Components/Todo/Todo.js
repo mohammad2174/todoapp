@@ -17,6 +17,15 @@ function Todo(props) {
             })
         setEdit(false);
     }
+    let doneHandler = e => {
+        axios.put(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos/${item.key}.json` , {done : ! item.done , text : item.text})
+            .then(response => {
+                todosContext.dispatch({type : 'toggle_todo', payload : {key: item.key}})
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
     let deleteHandler = e => {
         axios.delete(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos/${item.key}.json`)
             .then(response => {
@@ -38,7 +47,7 @@ function Todo(props) {
                                     {item.text}
                                 </div>
                                 <div>
-                                    <button type="button" className={`btn-sm mr-1 ${ !item.done ? 'btn-success' : 'btn-warning'}`} onClick={() => todosContext.dispatch({type : 'toggle_todo', payload : {key: item.key}})}>{item.done ? 'undone' : 'done'}</button>
+                                    <button type="button" className={`btn-sm mr-1 ${ !item.done ? 'btn-success' : 'btn-warning'}`} onClick={doneHandler}>{item.done ? 'undone' : 'done'}</button>
                                     <button type="button" className="btn btn-info btn-sm mr-1" onClick={() => setEdit(true)}>edit</button>
                                     <button type="button" className="btn btn-danger btn-sm" onClick={deleteHandler}>delete</button>
                                 </div>

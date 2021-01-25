@@ -32,11 +32,13 @@ class FormAddTodo extends React.Component {
      formHandler(e) {
         e.preventDefault();
         // this.context.dispatch({type : 'add_todo' , payload : {text: this.state.text}});
-         let todo = {text: this.state.text , done : false};
-         axios.post(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos.json` , todo)
-             .then(response => this.context.dispatch({type : 'add_todo' , payload : {todo: {...todo , key : response.data.name}}}))
-             .then(err => console.log(err))
-         this.setState({text : ''});
+         if (this.state.text.length > 1) {
+             let todo = {text: this.state.text , done : false};
+             axios.post(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos.json` , todo)
+                 .then(response => this.context.dispatch({type : 'add_todo' , payload : {todo: {...todo , key : response.data.name}}}))
+                 .then(err => console.log(err))
+             this.setState({text : ''});
+         }
     }
 
      inputHandler(e) { this.setState({text : e.target.value}) }

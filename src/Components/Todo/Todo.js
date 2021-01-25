@@ -1,6 +1,7 @@
 import React, {useState , useContext} from 'react';
 import EditTodo from "./EditTodo";
 import TodosContext from './../../Context/todos';
+import axios from "axios";
 
 function Todo(props) {
     const {item} = props;
@@ -11,7 +12,13 @@ function Todo(props) {
         setEdit(false);
     }
     let deleteHandler = e => {
-        todosContext.dispatch({type : 'delete_todo' , payload : {key : item.key}});
+        axios.delete(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos/${item.key}.json`)
+            .then(response => {
+                todosContext.dispatch({type : 'delete_todo' , payload : {key : item.key}});
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
     return (
         <>

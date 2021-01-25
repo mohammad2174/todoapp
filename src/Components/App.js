@@ -1,4 +1,4 @@
-import React, {useReducer , useEffect} from 'react';
+import React, {useReducer , useEffect , useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Header from "./Layouts/Header";
 import FormAddTodo from "./Todo/FormAddTodo";
@@ -60,6 +60,7 @@ function App() {
     })
 
     let jsonHandler = (data) => {
+        setLoading(false);
       let todos =  Object.entries(data).map(([key , value]) => {
           return {
               ...value,
@@ -69,7 +70,10 @@ function App() {
       dispatch({type : 'init_todo' , payload :{todos}})
     }
 
+    const [loading , setLoading] = useState();
+
     useEffect(() => {
+        setLoading(true);
         todoApi.get(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos.json`)
             .then(response => jsonHandler(response.data))
             .catch(err => console.log(err));
@@ -96,7 +100,14 @@ function App() {
                         <div className="todosList">
                             <div className="container">
                                 <div className="d-flex flex-column align-items-center ">
-                                    <TodoList />
+                                    {
+                                        loading
+                                        ? <h2>Loading data ...</h2>
+                                        : (
+                                                <TodoList />
+                                          )
+
+                                    }
                                 </div>
                             </div>
                         </div>

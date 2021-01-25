@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Todo/FormAddTodo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Todo/FormAddTodo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Todo/Todo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Todo/Todo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +55,7 @@
       <workItem from="1610430876180" duration="13984000" />
       <workItem from="1610516787956" duration="16054000" />
       <workItem from="1611394156559" duration="627000" />
-      <workItem from="1611552478329" duration="12457000" />
+      <workItem from="1611552478329" duration="14044000" />
     </task>
     <servers />
   </component>

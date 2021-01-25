@@ -8,7 +8,7 @@ function Todo(props) {
     const [ edit, setEdit ] = useState(false);
     const todosContext = useContext(TodosContext);
     let editHandler = text => {
-        axios.put(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos/${item.key}.json` , {done : item.done , text})
+        axios.put(`/${item.key}.json` , {done : item.done , text})
             .then(response => {
                 todosContext.dispatch({type : 'edit_todo' , payload : {key : item.key ,text}});
             })
@@ -18,7 +18,7 @@ function Todo(props) {
         setEdit(false);
     }
     let doneHandler = e => {
-        axios.put(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos/${item.key}.json` , {done : ! item.done , text : item.text})
+        axios.put(`/${item.key}.json` , {done : ! item.done , text : item.text})
             .then(response => {
                 todosContext.dispatch({type : 'toggle_todo', payload : {key: item.key}})
             })
@@ -27,7 +27,7 @@ function Todo(props) {
             })
     }
     let deleteHandler = e => {
-        axios.delete(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos/${item.key}.json`)
+        axios.delete(`/todos/${item.key}.json`)
             .then(response => {
                 todosContext.dispatch({type : 'delete_todo' , payload : {key : item.key}});
             })

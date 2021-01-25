@@ -34,7 +34,7 @@ class FormAddTodo extends React.Component {
         // this.context.dispatch({type : 'add_todo' , payload : {text: this.state.text}});
          if (this.state.text.length > 1) {
              let todo = {text: this.state.text , done : false};
-             axios.post(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos.json` , todo)
+             axios.post(`/todos.json` , todo)
                  .then(response => this.context.dispatch({type : 'add_todo' , payload : {todo: {...todo , key : response.data.name}}}))
                  .then(err => console.log(err))
              this.setState({text : ''});

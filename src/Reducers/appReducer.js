@@ -3,31 +3,31 @@ function AppReducer(state , action) {
     switch (action.type) {
         case 'add_todo' :
             return addTodo(state , action);
-            break;
+
         case 'delete_todo' :
             return deleteTodo(state , action);
-            break;
+
         case 'toggle_todo' :
             return toggleTodo(state , action);
-            break;
+
         case 'edit_todo' :
             return editTodo(state , action);
-            break;
+
         case 'login_user' :
             return {
                 ...state,
                 authenticated : true
             }
-            break;
+
         case 'logout_user' :
             return {
                 ...state,
                 authenticated : false
             }
-            break;
+
         default:
             return state;
-            break;
+
     }
     return state;
 }
@@ -35,12 +35,13 @@ function AppReducer(state , action) {
 export default AppReducer;
 
 let addTodo = (state , action) => {
-    let {text} = action.payload
+    let {todo} = action.payload
+    console.log(todo)
     return {
         ...state,
         todos : [
             ...state.todos,
-            {key : Date.now() , done : false , text}
+            todo
         ]
     }
 }

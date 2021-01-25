@@ -8,7 +8,13 @@ function Todo(props) {
     const [ edit, setEdit ] = useState(false);
     const todosContext = useContext(TodosContext);
     let editHandler = text => {
-        todosContext.dispatch({type : 'edit_todo' , payload : {key : item.key ,text}});
+        axios.put(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos/${item.key}.json` , {done : item.done , text})
+            .then(response => {
+                todosContext.dispatch({type : 'edit_todo' , payload : {key : item.key ,text}});
+            })
+            .catch(err => {
+                console.log(err)
+            })
         setEdit(false);
     }
     let deleteHandler = e => {

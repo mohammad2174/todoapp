@@ -1,6 +1,7 @@
 import React from 'react';
 import TodosContext from './../../Context/todos';
 import AuthContext from './../../Context/auth';
+import axios from "axios";
 
 
 // function FormAddTodo(props){
@@ -30,7 +31,10 @@ class FormAddTodo extends React.Component {
     static contextType = TodosContext;
      formHandler(e) {
         e.preventDefault();
-        this.context.dispatch({type : 'add_todo' , payload : {text: this.state.text}});
+        // this.context.dispatch({type : 'add_todo' , payload : {text: this.state.text}});
+         axios.post(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos.json` , {text: this.state.text , done : false})
+             .then(response => console.log(response))
+             .then(err => console.log(err))
          this.setState({text : ''});
     }
 

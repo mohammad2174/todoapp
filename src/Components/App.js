@@ -6,7 +6,7 @@ import TodoList from "./Todo/TodoList";
 import TodosContext from './../Context/todos';
 import AuthContext from './../Context/auth';
 import AppReducer from './../Reducers/appReducer';
-import axios from 'axios';
+import todoApi from './../Api/todos';
 
 
 // class App extends Component {
@@ -70,7 +70,7 @@ function App() {
     }
 
     useEffect(() => {
-        axios.get(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos.json`)
+        todoApi.get(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos.json`)
             .then(response => jsonHandler(response.data))
             .catch(err => console.log(err));
     },[]);

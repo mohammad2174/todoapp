@@ -19,7 +19,7 @@ function Header() {
                     </a>
                     <ul className='navbar-nav mr-auto'>
                         <li className='nav-item active'>
-                            <NavLink className='nav-link' exact to="/" activeStyle={{color : 'red'}}>Home</NavLink>
+                            <NavLink className='nav-link' exact to="/">Home</NavLink>
                         </li>
                         <li className='nav-item'>
                             <NavLink className='nav-link' to='/about' activeclassName='selected'>About</NavLink>

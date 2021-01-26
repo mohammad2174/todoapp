@@ -1,12 +1,11 @@
-import React, {useReducer , useEffect , useState} from 'react';
+import React, {useReducer} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Header from "./Layouts/Header";
-import FormAddTodo from "./Todo/FormAddTodo";
-import TodoList from "./Todo/TodoList";
 import TodosContext from './../Context/todos';
 import AuthContext from './../Context/auth';
 import AppReducer from './../Reducers/appReducer';
-import todoApi from './../Api/todos';
+import {BrowserRouter , Route} from 'react-router-dom';
+import Home from "../Routes/Home";
 
 
 // class App extends Component {
@@ -59,62 +58,28 @@ function App() {
         authenticated : false,
     })
 
-    let jsonHandler = (data) => {
-        setLoading(false);
-      let todos =  Object.entries(data).map(([key , value]) => {
-          return {
-              ...value,
-              key
-          }
-      });
-      dispatch({type : 'init_todo' , payload :{todos}})
-    }
 
-    const [loading , setLoading] = useState();
-
-    useEffect(() => {
-        setLoading(true);
-        todoApi.get(`https://react-cousre-169dd-default-rtdb.firebaseio.com/todos.json`)
-            .then(response => jsonHandler(response.data))
-            .catch(err => console.log(err));
-    },[]);
 
     return(
-        <AuthContext.Provider value={{authenticated : state.authenticated,
-            dispatch
-        }}>
-            <TodosContext.Provider value={{
-                dispatch,
-                todos : state.todos,
+        <BrowserRouter>
+            <AuthContext.Provider value={{authenticated : state.authenticated,
+                dispatch
             }}>
-                <div className="App">
-                    <Header />
-                    <main>
-                        <section className="jumbotron">
-                            <div className="container d-flex flex-column align-items-center">
-                                <h1 className="jumbotron-heading">Welcome!</h1>
-                                <p className="lead text-muted">To get started, add some items to your list:</p>
-                                <FormAddTodo />
-                            </div>
-                        </section>
-                        <div className="todosList">
-                            <div className="container">
-                                <div className="d-flex flex-column align-items-center ">
-                                    {
-                                        loading
-                                        ? <h2>Loading data ...</h2>
-                                        : (
-                                                <TodoList />
-                                          )
-
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </main>
-                </div>
-            </TodosContext.Provider>
-        </AuthContext.Provider>
+                <TodosContext.Provider value={{
+                    dispatch,
+                    todos : state.todos,
+                }}>
+                    <div className="App">
+                        <Header />
+                        <main>
+                            <Route path='/'>
+                                <Home/>
+                            </Route>
+                        </main>
+                    </div>
+                </TodosContext.Provider>
+            </AuthContext.Provider>
+        </BrowserRouter>
     )
 }
 

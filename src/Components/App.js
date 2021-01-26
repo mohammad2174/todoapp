@@ -7,6 +7,7 @@ import AppReducer from './../Reducers/appReducer';
 import {BrowserRouter , Route} from 'react-router-dom';
 import Home from "../Routes/Home";
 import About from "../Routes/About";
+import Contact from "../Routes/Contact";
 
 
 // class App extends Component {
@@ -75,7 +76,7 @@ function App() {
                         <main>
                             <Route path='/' exact component={Home} />
                             <Route path='/about' component={About} />
-                            <Route path='/contact' render={() => <h2>Contact</h2>} />
+                            <Route path='/contact' component={Contact} />
                         </main>
                     </div>
                 </TodosContext.Provider>

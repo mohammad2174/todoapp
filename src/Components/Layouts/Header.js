@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import AuthContext from '../../Context/auth';
 import TodosContext from '../../Context/todos';
+import {Link} from "react-router-dom";
 
 
 function Header() {
@@ -8,6 +9,7 @@ function Header() {
     const authContext = useContext(AuthContext);
     let doLogin = () => authContext.dispatch({type : 'login_user'});
     let doLogout = () => authContext.dispatch({type : 'logout_user'});
+
     return(
         <header>
             <div className="navbar navbar-dark bg-dark shadow-sm">
@@ -16,14 +18,18 @@ function Header() {
                         <strong>Todo App</strong>
                     </a>
                     <ul className='navbar-nav mr-auto'>
-                        <li>
-                            <a className='nav-link active' href="/">Home</a>
+                        <li className='nav-item active'>
+                            <Link className='nav-link active' to="/">Home</Link>
                         </li>
-                        <li>
-                            <a className='nav-link' href="/about">About</a>
+                        <li className='nav-item'>
+                            <Link className='nav-link' to={{
+                                pathname : '/about',
+                                search : '?name=milad',
+                                hash : '#mypage',
+                            }}>About</Link>
                         </li>
-                        <li>
-                            <a className='nav-link' href="/contact">Contact</a>
+                        <li className='nav-item'>
+                            <Link className='nav-link' to={location => `/contact${location.search}`}>Contact</Link>
                         </li>
                     </ul>
                     {

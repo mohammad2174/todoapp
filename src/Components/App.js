@@ -6,6 +6,7 @@ import AuthContext from './../Context/auth';
 import AppReducer from './../Reducers/appReducer';
 import {BrowserRouter , Route} from 'react-router-dom';
 import Home from "../Routes/Home";
+import About from "../Routes/About";
 
 
 // class App extends Component {
@@ -72,9 +73,9 @@ function App() {
                     <div className="App">
                         <Header />
                         <main>
-                            <Route path='/'>
-                                <Home/>
-                            </Route>
+                            <Route path='/' exact component={Home} />
+                            <Route path='/about' component={About} />
+                            <Route path='/contact' render={() => <h2>Contact</h2>} />
                         </main>
                     </div>
                 </TodosContext.Provider>

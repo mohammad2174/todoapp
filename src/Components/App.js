@@ -76,7 +76,7 @@ function App() {
                         <Header />
                         <main>
                             <Route path='/' exact component={Home} />
-                            <Route path='/todos/:id' exact component={Todo} />
+                            <Route path='/todos/:todo' exact component={Todo} />
                             <Route path='/about' component={About} />
                             <Route path='/contact' component={Contact} />
                         </main>

@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from 'react-router-dom';
+import {useParams , useHistory} from 'react-router-dom';
 import todoApi from './../Api/todos';
 
 function Todo(props){
     const params = useParams();
+    const history = useHistory();
     const [todo , setTodo] = useState({})
     const [loading , setLoading] = useState();
 
@@ -15,7 +16,7 @@ function Todo(props){
                 if (response.data){
                     setTodo({...response.data , key : params.todo})
                 } else {
-                    props.history.push('/404')
+                    history.push('/404')
                 }
             })
             .catch(err => console.log(err))

@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11a5c7c3-58a5-4e38-98d5-60a333fe5c6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Routes/NotFound.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Todo/Todo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Todo/Todo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Routes/Todo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes/Todo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +55,7 @@
       <workItem from="1611552478329" duration="17433000" />
       <workItem from="1611638805650" duration="14338000" />
       <workItem from="1611726043279" duration="5300000" />
-      <workItem from="1612417066951" duration="6711000" />
+      <workItem from="1612417066951" duration="7019000" />
     </task>
     <servers />
   </component>

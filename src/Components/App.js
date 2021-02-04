@@ -6,12 +6,13 @@ import AuthContext from './../Context/auth';
 import AppReducer from './../Reducers/appReducer';
 import {BrowserRouter , Route , Switch} from 'react-router-dom';
 import AsyncComponent from "../AsyncComponent";
+import loadable from "@loadable/component";
 
-const About = AsyncComponent(() => import('../Routes/About').then(module => module.default))
-const Home = AsyncComponent(() => import('../Routes/Home').then(module => module.default))
-const Contact = AsyncComponent(() => import('../Routes/Contact').then(module => module.default))
-const Todo = AsyncComponent(() => import('../Routes/Todo').then(module => module.default))
-const NotFound = AsyncComponent(() => import('../Routes/NotFound').then(module => module.default))
+const About = loadable(() => import('../Routes/About'))
+const Home = loadable(() => import('../Routes/Home'))
+const Contact = loadable(() => import('../Routes/Contact'))
+const Todo = loadable(() => import('../Routes/Todo'))
+const NotFound = loadable(() => import('../Routes/NotFound'))
 // class App extends Component {
 //     state = {
 //         todos : [],

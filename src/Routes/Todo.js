@@ -12,7 +12,11 @@ function Todo(props){
         todoApi.get(`/todos/${params.todo}.json`)
             .then(response => {
                 setLoading(false)
-                setTodo({...response.data , key : params.todo})
+                if (response.data){
+                    setTodo({...response.data , key : params.todo})
+                } else {
+                    props.history.push('/404')
+                }
             })
             .catch(err => console.log(err))
     },[])

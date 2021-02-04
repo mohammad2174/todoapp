@@ -9,6 +9,7 @@ import Home from "../Routes/Home";
 import About from "../Routes/About";
 import Contact from "../Routes/Contact";
 import Todo from "../Routes/Todo";
+import NotFound from "../Routes/NotFound";
 
 
 // class App extends Component {
@@ -79,7 +80,9 @@ function App() {
                             <Route path='/' exact component={Home} />
                             <Route path='/about' component={About} />
                             <Route path='/contact' component={Contact} />
-                            <Route path='/:todo' exact component={Todo} />
+                            <Route path='/todos/:todo' exact component={Todo} />
+                            <Route path='/404' component={NotFound} />
+                            <Route component={NotFound} />
                             </Switch>
                         </main>
                     </div>

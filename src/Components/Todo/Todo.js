@@ -45,7 +45,7 @@ function Todo(props) {
                             <div
                                 className="d-flex justify-content-between align-items-center border rounded p-3">
                                 <div>
-                                    <Link to={`/${item.key}`}>{item.text}</Link>
+                                    <Link to={`/todos/${item.key}`}>{item.text}</Link>
                                 </div>
                                 <div>
                                     <button type="button" className={`btn-sm mr-1 ${ !item.done ? 'btn-success' : 'btn-warning'}`} onClick={doneHandler}>{item.done ? 'undone' : 'done'}</button>

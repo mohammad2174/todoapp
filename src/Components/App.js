@@ -4,7 +4,7 @@ import Header from "./Layouts/Header";
 import TodosContext from './../Context/todos';
 import AuthContext from './../Context/auth';
 import AppReducer from './../Reducers/appReducer';
-import {BrowserRouter , Route} from 'react-router-dom';
+import {BrowserRouter , Route , Switch} from 'react-router-dom';
 import Home from "../Routes/Home";
 import About from "../Routes/About";
 import Contact from "../Routes/Contact";
@@ -75,10 +75,12 @@ function App() {
                     <div className="App">
                         <Header />
                         <main>
+                            <Switch>
                             <Route path='/' exact component={Home} />
-                            <Route path='/todos/:todo' exact component={Todo} />
                             <Route path='/about' component={About} />
                             <Route path='/contact' component={Contact} />
+                            <Route path='/:todo' exact component={Todo} />
+                            </Switch>
                         </main>
                     </div>
                 </TodosContext.Provider>
